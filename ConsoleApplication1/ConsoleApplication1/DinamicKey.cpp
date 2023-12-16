@@ -8,17 +8,29 @@ DinamicKey::~DinamicKey(){
 
 }
 
+void DinamicKey::showMatrix() {
+    for (char i = 0; i < 6; i++) {
+        for (char j = 0; j < 9; j++) {
+            cout << key[i][j] << "\t";
+        }
+        cout << endl;
+    }
+}
+
 bool DinamicKey::authenticateKey() {
-        int row, column, value;
+    srand(time(NULL));
+        int row, column;
+        string value;
 
-        cout << "Introduzca los valores para iniciar sesion: (fila, columna, valor)\n";
+        showMatrix();
+        for (int i = 0; i < 3; i++) {
+            row = rand() % 5 + 1;
+            column = rand() % 8 + 1;
 
-        for (int i = 0; i < 3; ++i) {
-            cout << "Ingrese la fila (1-5): "; cin >> row;
-            cout << "Ingrese la columna (1-8): "; cin >> column;
-            cout << "Ingrese el valor: "; cin >> value;
+            cout << "Ingrese los valores correspondientes de (" << key[0][column] << key[row][0] << "): ";
+            cin >> value;
 
-            if (row >= 1 && row <= 5 && column >= 1 && column <= 8 && value == key[row - 1][column - 1]) {
+            if (value == key[row][column]) {
                 cout << "Autenticacion exitosa\n";
             }
             else {
@@ -26,6 +38,5 @@ bool DinamicKey::authenticateKey() {
                 return false;
             }
         }
-
         return true;
 }

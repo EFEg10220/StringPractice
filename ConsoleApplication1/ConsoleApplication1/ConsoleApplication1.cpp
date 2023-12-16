@@ -1,6 +1,8 @@
-#include <iostream>
+#include "DinamicKey.h"
 
-int main()
-{
-    std::cout << "Hello World!\n";
+int main(){
+	DinamicKey keyObject;
+
+	keyObject.authenticateKey();
+
 }
