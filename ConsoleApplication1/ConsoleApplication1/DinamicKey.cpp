@@ -21,6 +21,7 @@ bool DinamicKey::authenticateKey() {
     srand(time(NULL));
         int row, column;
         string value;
+        bool isCorrect = true;
 
         showMatrix();
         for (int i = 0; i < 3; i++) {
@@ -30,13 +31,15 @@ bool DinamicKey::authenticateKey() {
             cout << "Ingrese los valores correspondientes de (" << key[0][column] << key[row][0] << "): ";
             cin >> value;
 
-            if (value == key[row][column]) {
-                cout << "Autenticacion exitosa\n";
-            }
-            else {
-                cout << "Autenticacion fallida, Intente de nuevo\n";
-                return false;
+            if (value != key[row][column]) {
+                cout << "Autenticacion fallida, intente de nuevo\n";
+                isCorrect = false;
+                break;
             }
         }
-        return true;
+
+        if (isCorrect) {
+            cout << "Autenticacion exitosa\n";
+            return true;
+        }
 }
