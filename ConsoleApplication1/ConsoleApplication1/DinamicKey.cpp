@@ -19,6 +19,7 @@ void DinamicKey::showMatrix() {
 
 bool DinamicKey::authenticateKey() {
     srand(time(NULL));
+    //NOTE: Format your code, the extra tab it is not necessary
         int row, column;
         string value;
         bool isCorrect = true;
@@ -42,4 +43,5 @@ bool DinamicKey::authenticateKey() {
             cout << "Autenticacion exitosa\n";
             return true;
         }
+        //Note: Is better to move the the rejected message at the end, for security, if you validate one value each time, the hacker user get more information.
 }
